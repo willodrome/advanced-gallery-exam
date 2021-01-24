@@ -81,6 +81,7 @@
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-fontawesome": "^1.6.1",
+    "react-infinite-scroll-component": "^5.1.0",
     "react-viewer": "^2.11.1"
   },
   "gh-pages-deploy": {

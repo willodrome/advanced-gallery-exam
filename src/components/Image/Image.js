@@ -42,13 +42,17 @@ class Image extends React.Component {
     const { galleryWidth } = this.props;
     const targetSize = 200;
     const imagesPerRow = Math.round(galleryWidth / targetSize);
-    const size = galleryWidth / imagesPerRow;
+    const size = galleryWidth / imagesPerRow - 0.25;
     this.setState({
       size,
     });
   }
 
   componentDidMount() {
+    this.calcImageSize();
+  }
+
+  componentWillReceiveProps() {
     this.calcImageSize();
   }
 
@@ -73,7 +77,7 @@ class Image extends React.Component {
         {/* Modal Image View */}
         <Viewer
           visible={expanded}
-          noToolbar={true}
+          noToolbar={false}
           images={[{ src: this.urlFromDto(this.props.dto), alt: "" }]}
           style={{
             transform: `rotate(${angle}deg) !important`,
@@ -101,7 +105,7 @@ class Image extends React.Component {
             title="delete"
           />
           <FontAwesome
-            onClick={() => this.expandImage(this.props.dto.id)}
+            onClick={() => this.expandImage()}
             className="image-icon"
             name="expand"
             title="expand"
