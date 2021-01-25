@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import Image from "../Image";
-import { SortableContainer, SortableElement } from "react-sortable-hoc";
-import arrayMove from "array-move";
 import "./Gallery.scss";
 
 class Gallery extends React.Component {
