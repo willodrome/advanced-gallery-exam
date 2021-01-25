@@ -33,8 +33,8 @@ bower_components/
 # IDE/Editor data
 .idea
 
-package-lock.json
+# package-lock.json
 .DS_Store
 
-yarn.lock
+# yarn.lock
 .eslintcache
