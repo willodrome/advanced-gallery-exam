@@ -56,8 +56,10 @@ class Image extends React.Component {
     this.calcImageSize();
   }
 
-  urlFromDto(dto) {
-    return `https://farm${dto.farm}.staticflickr.com/${dto.server}/${dto.id}_${dto.secret}.jpg`;
+  urlFromDto(dto, large = false) {
+    return `https://farm${dto.farm}.staticflickr.com/${dto.server}/${dto.id}_${
+      dto.secret
+    }${large ? "_b" : ""}.jpg`;
   }
 
   render() {
@@ -72,16 +74,20 @@ class Image extends React.Component {
           width: this.state.size + "px",
           height: this.state.size + "px",
           transform: `rotate(${angle}deg)`,
+          transition: `ease-out 50ms`,
         }}
       >
         {/* Modal Image View */}
         <Viewer
           visible={expanded}
-          noToolbar={false}
-          images={[{ src: this.urlFromDto(this.props.dto), alt: "" }]}
-          style={{
-            transform: `rotate(${angle}deg) !important`,
-          }}
+          noToolbar={true}
+          onMaskClick={() => this.expandImage()}
+          images={[
+            {
+              src: this.urlFromDto(this.props.dto, true),
+              alt: this.props.dto.title,
+            },
+          ]}
           onClose={() => {
             this.setState({ expanded: false });
           }}
